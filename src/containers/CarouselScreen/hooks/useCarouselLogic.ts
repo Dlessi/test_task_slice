@@ -1,7 +1,6 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { ICarouselItem } from '../components/CarouselItem';
-import { mockCarouselList } from "../../../helpers/mockData";
-
+import dataMock from "../../../helpers/dataMock.json";
 
 const useCarouselLogic = (displayBlockAmount) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -10,10 +9,10 @@ const useCarouselLogic = (displayBlockAmount) => {
   const [data, setData] = useState<ICarouselItem[]>([]);
   const isActivePrevButton = useMemo(() => !(isDataLoading || currentIndex === 0), [isDataLoading, currentIndex])
   const isActiveNextButton = useMemo(() => !(isDataLoading || currentIndex + displayBlockAmount === data.length), [isDataLoading, currentIndex, data])
+  console.log(dataMock)
   useEffect(() => {
-    // TODO: mock data
     setTimeout(() => {
-      setData(mockCarouselList);
+      setData(dataMock)
       setIsDataLoading(false);
     }, 400)
   }, [])
