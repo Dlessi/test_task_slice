@@ -12,7 +12,6 @@ interface ICarouselItemProps extends ICarouselItem {
 
 const CarouselItem: React.FC<ICarouselItemProps> = (props) => {
   const itemUrl = useMemo(() => props.images[Math.floor(Math.random() * props.images.length)], [props.images])
-  console.log(props.size)
   return (
     <View style={styles.wrapper}>
       <Image source={{ uri: itemUrl}} style={[{ width: props.size, height: props.size }, styles.image]} />
